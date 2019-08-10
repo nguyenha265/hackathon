@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p><a href="/home">Quay lại trang quản lý</a></p>
+<h2>Cập nhật công việc</h2>
+<th:block th:if="${message}">
+    <th th:text="${message}"></th>
+</th:block>
+<form onsubmit="return confirm('bạn có chắc muốn xóa')" th:action="@{/delete-task}" method="post">
+    <table>
+        <input type="hidden" th:field="*{task.id}">
+        <tr>
+            <td>Tên:</td>
+            <td><p th:text="${task.name}"></p></td>
+        </tr>
+        <tr>
+            <td> Thời gian:</td>
+            <td><p th:text="${task.time}"></td>
+        </tr>
+        <tr>
+            <td> Trạng thái:</td>
+            <td><p th:text="${task.status}"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Xóa">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

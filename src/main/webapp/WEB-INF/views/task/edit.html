@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật công việc</title>
+</head>
+<body>
+<p><a href="/home">Quay lại trang quản lý</a></p>
+<h2>Cập nhật công việc</h2>
+<th:block th:if="${message}">
+    <th th:text="${message}"></th>
+</th:block>
+<form th:action="@{/edit-task}" th:object="${task}" method="post">
+    <table>
+        <input type="hidden" th:field="*{id}">
+        <tr>
+            <td>Tên:</td>
+            <td><input type="text" th:field="*{name}"></td>
+            <br>
+        </tr>
+        <tr>
+            <td> Thời gian:</td>
+            <td><input type="date" th:field="*{time}"></td>
+            <br>
+        </tr>
+        <tr>
+            <td> Trạng thái:
+                <select th:field="*{status}">
+                    <option value="Quan trọng-Khẩn Cấp">Quan trọng-Khẩn Cấp</option>
+                    <option value="Khẩn Cấp-ít Quan Trọng">Khẩn Cấp-ít Quan Trọng</option>
+                    <option value="Quan Trọng-ít khẩn cấp">Quan Trọng-ít khẩn cấp</option>
+                    <option value="Không quan trọng-Không khẩn cấp">Không quan trọng-Không khẩn cấp</option>
+                </select>
+            </td>
+
+            <br>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Lưu">
+                <a href="/home">Hủy</a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
